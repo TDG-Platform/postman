@@ -61,7 +61,8 @@
 				"3345f0f0-353a-fd35-596a-ad35035f9c79",
 				"c14a8be5-ef93-49a6-4b3d-1679d2b1f43c",
 				"a507dbdc-cdee-ccc0-b327-dd1634bd9409",
-				"70f74df3-0f7e-3196-56b7-5a4605efff88"
+				"70f74df3-0f7e-3196-56b7-5a4605efff88",
+				"d468dcca-553b-fe18-d5c2-2b4323992da5"
 			],
 			"collection": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
 			"owner": 0,
@@ -221,7 +222,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1437167637804,
+			"time": 1437168051401,
 			"name": "Thumbnail Mode Standard (fit to square)",
 			"description": "",
 			"collectionId": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
@@ -340,6 +341,27 @@
 			"description": "",
 			"collectionId": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
 			"responses": []
+		},
+		{
+			"id": "d468dcca-553b-fe18-d5c2-2b4323992da5",
+			"headers": "",
+			"url": "https://geobigdata.io/thumbnails/v1/thumbnail/1030010004A5E500/256?orientation=standard",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
+			"data": [],
+			"dataMode": "params",
+			"name": "Thumbnail Mode Standard (fit to square-wide)",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1437167946022,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "1d865b74-0bf7-c74b-2784-498ced07d73d"
 		}
 	]
 }
