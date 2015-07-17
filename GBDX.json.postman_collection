@@ -1,0 +1,123 @@
+{
+	"id": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
+	"name": "GBDX",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "8f7897e2-3694-1561-c4b2-365d0013491f",
+			"name": "Auth",
+			"description": "",
+			"write": true,
+			"order": [
+				"615bd605-6eee-f925-4a6a-3a17545b3115"
+			],
+			"collection": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
+			"owner": 0,
+			"collection_name": "GBDX",
+			"collection_owner": 0,
+			"collection_id": "63d26c36-5eaa-46d1-add9-1cb91d520d23"
+		},
+		{
+			"id": "202d4352-6216-3bf9-f5fa-1deb60a6f38f",
+			"name": "Storage",
+			"description": "",
+			"write": true,
+			"order": [
+				"9b550890-389c-fd63-021c-d5becc384add",
+				"0a3d3d00-38d1-a096-1415-8b340ddecfb0"
+			],
+			"collection": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
+			"owner": 0,
+			"collection_name": "GBDX",
+			"collection_owner": 0,
+			"collection_id": "63d26c36-5eaa-46d1-add9-1cb91d520d23"
+		}
+	],
+	"timestamp": 1437151846265,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "0a3d3d00-38d1-a096-1415-8b340ddecfb0",
+			"headers": "Authorization: Bearer {{token}}\n",
+			"url": "{{protocol}}://{{host}}/s3creds/v1/prefix?duration=3600",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
+			"data": [],
+			"dataMode": "params",
+			"name": "Get S3 location &  credentials (specify timeout)",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1437155448422,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "202d4352-6216-3bf9-f5fa-1deb60a6f38f"
+		},
+		{
+			"id": "615bd605-6eee-f925-4a6a-3a17545b3115",
+			"headers": "Authorization: Basic {{apikey}}\n",
+			"url": "{{protocol}}://{{host}}/auth/v1/oauth/token/",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "{{username}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1437152598488,
+			"name": "Get user token",
+			"description": "",
+			"collectionId": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
+			"folder": "8f7897e2-3694-1561-c4b2-365d0013491f"
+		},
+		{
+			"id": "9b550890-389c-fd63-021c-d5becc384add",
+			"headers": "Authorization: Bearer {{token}}\n",
+			"url": "{{protocol}}://{{host}}/s3creds/v1/prefix",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "63d26c36-5eaa-46d1-add9-1cb91d520d23",
+			"data": [],
+			"dataMode": "params",
+			"name": "Get S3 location &  credentials",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1437155313904,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "202d4352-6216-3bf9-f5fa-1deb60a6f38f"
+		}
+	]
+}
