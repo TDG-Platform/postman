@@ -2,6 +2,14 @@
 
 A set of example HTTP requests for use with POSTman for hitting the GBDX APIs.
 
+* Authorization (get Oauth2 token)
+* Catalog
+* Workflow System
+* Materialsets
+* Ordering
+* S3 Credential Service
+* Browse Image Thumbnail Service
+
 # Setup
 
 1.  Get postman:  http://getpostman.com
