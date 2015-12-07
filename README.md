@@ -4,8 +4,8 @@ A set of example HTTP requests for use with POSTman for hitting the GBDX APIs.
 
 * Authorization (get Oauth2 token)
 * Catalog
-* Workflow System
-* Materialsets
+* Workflow
+* Material Sets
 * Ordering
 * S3 Credential Service
 * Browse Image Thumbnail Service
@@ -19,6 +19,6 @@ A set of example HTTP requests for use with POSTman for hitting the GBDX APIs.
 
 # Operation
 
-1.  First get your user token.  Execute the "Get User Token" request in the Auth folder.
+1.  First get your user bearer token.  Execute the "Get Bearer Token" request in the Auth folder.
 2.  When your token comes back in the response, set the "token" environment variable with the value of your token.
 3.  Play with other requests :)
