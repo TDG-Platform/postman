@@ -203,7 +203,7 @@
 		},
 		{
 			"id": "052c75c1-605a-2311-d1d0-1105e7dfa080",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/relationship",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -225,7 +225,7 @@
 		},
 		{
 			"id": "0649ac8d-b450-89d8-7c6b-dde65f0ee910",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/traverse",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -247,7 +247,7 @@
 		},
 		{
 			"id": "101b7e0c-7596-ad21-8a87-9fa35026003f",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/record/myRecord",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -290,7 +290,7 @@
 		},
 		{
 			"id": "1ae8081a-9e93-5764-1098-c95b6baaf671",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/materialset/v1/MaterialSet-1",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -311,7 +311,7 @@
 		},
 		{
 			"id": "1bd55d87-21aa-0cc7-f0c5-56297ddb0dce",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -333,7 +333,7 @@
 		},
 		{
 			"id": "1ed74c1d-aaf2-b4ec-746f-93784d980fe2",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -355,7 +355,7 @@
 		},
 		{
 			"id": "1feac7a0-8f87-cced-0352-119d80606e18",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -441,7 +441,7 @@
 		},
 		{
 			"id": "2dffba32-ba23-c043-21ff-8a77127cff60",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -484,7 +484,7 @@
 		},
 		{
 			"id": "2e7eb2e7-160c-f260-6b50-3f0e098ae6a5",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{suAccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/record/myRecord",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -526,7 +526,7 @@
 		},
 		{
 			"id": "35bc82e4-a4c0-6e82-352f-d299625f78c2",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/type/myType",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -568,7 +568,7 @@
 		},
 		{
 			"id": "3b84cd21-3a8d-ef05-2241-bfb0870c83e4",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/relationship/r1",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -589,7 +589,7 @@
 		},
 		{
 			"id": "47077bfe-ceae-84e0-911c-2696c060f3dd",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/traverse",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -632,7 +632,7 @@
 		},
 		{
 			"id": "4c03bea2-4a85-9798-c7d0-e5141d9052e6",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/s3creds/v1/object/url?object_name=folder/file.txt",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -651,7 +651,7 @@
 		},
 		{
 			"id": "53908094-ce95-a565-e83b-18da899082b6",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/materialset/v1/MaterialSet-1",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -861,7 +861,7 @@
 		},
 		{
 			"id": "822d4b0a-1e1c-acad-889e-1765d0fcbab7",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/materialset/v1/",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -883,7 +883,7 @@
 		},
 		{
 			"id": "863949fc-d735-0b20-c2f5-c655ac281fc0",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/record",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -946,7 +946,7 @@
 		},
 		{
 			"id": "90753d9d-8f34-d14b-979f-d9e6ae8af73e",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -990,7 +990,7 @@
 		},
 		{
 			"id": "9598dd73-c291-7d3a-e073-05dd30b6b3d1",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1012,7 +1012,7 @@
 		},
 		{
 			"id": "986bde17-e1d0-2479-001e-4aedffdeba00",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/type",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1034,7 +1034,7 @@
 		},
 		{
 			"id": "a4f4bbf6-3515-c0bc-4762-ad22c43fbcb3",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/relationship/r1",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1055,7 +1055,7 @@
 		},
 		{
 			"id": "a70bd4d5-df7a-9cf9-c679-892d75f072dd",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1077,7 +1077,7 @@
 		},
 		{
 			"id": "a8f73575-24c2-e611-8b6a-22d7e8bdb8cb",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/materialset/v1/MaterialSet-1/acq-1",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1099,7 +1099,7 @@
 		},
 		{
 			"id": "a9051594-ec18-083f-0606-3cd97ce69f91",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1121,7 +1121,7 @@
 		},
 		{
 			"id": "ac57f3ce-45ed-1ce9-355b-d70e4ab1b938",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1164,7 +1164,7 @@
 		},
 		{
 			"id": "b68f9acd-c44f-1e88-8472-1d62908c6c3d",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/type/myType",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1206,7 +1206,7 @@
 		},
 		{
 			"id": "bcb74479-b5e9-f2f4-4ee3-3a61b162142b",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1250,7 +1250,7 @@
 		},
 		{
 			"id": "c5d42969-b78b-eb1e-6d62-0ccb1f52e4c1",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1293,7 +1293,7 @@
 		},
 		{
 			"id": "d1118cbd-60ba-92a4-f514-eeef481e72a0",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/traverse",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1381,7 +1381,7 @@
 		},
 		{
 			"id": "ded811f9-0c4d-5c08-bed2-838d49154937",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/s3creds/v1/object?object_path=folder",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1422,7 +1422,7 @@
 		},
 		{
 			"id": "e740ebab-4518-8126-f556-127bd6597553",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/search",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1444,7 +1444,7 @@
 		},
 		{
 			"id": "ec9f5e74-8ef1-6b8a-189f-2be854769ac8",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/type",
 			"pathVariables": {},
 			"preRequestScript": "",
@@ -1486,7 +1486,7 @@
 		},
 		{
 			"id": "f6d27d1f-8139-3eea-2819-220d3a9e6d42",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/catalog/v1/record",
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -1528,7 +1528,7 @@
 		},
 		{
 			"id": "fe3a1f14-1889-096b-54ba-46833599f124",
-			"headers": "Content-Type: application/json\nAuthorization: Bearer {{AccessToken}}\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{token}}\n",
 			"url": "https://geobigdata.io/s3creds/v1/heartbeat",
 			"pathVariables": {},
 			"preRequestScript": "",
