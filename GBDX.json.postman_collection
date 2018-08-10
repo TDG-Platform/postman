@@ -1,26 +1,22 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "8ce6a993-84ec-4095-adba-c09258354715",
 		"name": "GBDX",
-		"_postman_id": "8c52e529-666a-c40f-b21f-c7582bce1186",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Auth",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Get user token",
 					"request": {
-						"url": "https://geobigdata.io/auth/v1/oauth/token/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -43,7 +39,23 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "https://geobigdata.io/auth/v1/oauth/token/"
+					},
+					"response": []
+				},
+				{
+					"name": "Validate token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {},
+						"url": "https://geobigdata.io/auth/v1/validate_token",
+						"description": "Validates token and provides basic metadata"
 					},
 					"response": []
 				}
@@ -56,24 +68,22 @@
 				{
 					"name": "Cat V2 Get a record",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/record/myRecord",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/catalog/v2/record/myRecord",
 						"description": "Replace \"my record\" with a valid record ID to get a response. Any type of record can be retrieved."
 					},
 					"response": []
@@ -81,24 +91,22 @@
 				{
 					"name": "Cat V2 Search by spatial area (all records over Denver)",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "  {\n\n  \t\"searchAreaWkt\": \"POLYGON ((-122.41189956665039 37.59415685597818, -122.41189956665039 37.64460175855099, -122.34529495239259 37.64460175855099, -122.34529495239259 37.59415685597818, -122.41189956665039 37.59415685597818))\",\n\n  \t\"startDate\": null,\n  \t\"endDate\": null\n  \n  }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This example shows a search using a polygon that covers the Denver area."
 					},
 					"response": []
@@ -106,24 +114,22 @@
 				{
 					"name": "Cat V2 Search by date range",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"searchAreaWkt\": null,\n\t\"startDate\": \"2014-06-01T12:00:00.000Z\",\n\t\"endDate\": \"2014-06-06T12:00:00.000Z\"\n\n}"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This example shows a search by date range."
 					},
 					"response": []
@@ -131,24 +137,22 @@
 				{
 					"name": "Cat V2 Search by types",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "     {  \n        \"searchAreaWkt\": \"POLYGON ((85.12055941 27.08074442, 85.31423408 27.10157442, 85.31502922 26.960545, 85.11922108 26.93735095, 85.12055941 27.08074442))\",\n        \"startDate\":null,\n        \"endDate\":null,\n        \"types\":[\"DigitalGlobeProduct\"],\n        \"limit\":50\n    }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This example shows a search by Type. See catalog V2 documentation for a list of types. A limit of \"3\" is set in the request body, so the results will only show three records."
 					},
 					"response": []
@@ -156,24 +160,22 @@
 				{
 					"name": "Cat V2 Search by multiple types",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "    {\n    \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \t\"startDate\": \"2014-01-01T00:00:00.000Z\",\n    \t\"endDate\": \"2014-12-31T23:59:59.999Z\",\n    \t\"types\": [\"WV03_SWIR\",\n    \t\tDigitalGlobeProduct]\n    }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This example shows a search by multiple types within a specified search area. The response will include all records in the area that match both types in the request. If a record only matches one of the types in a multipe type search, it will not be included in the results."
 					},
 					"response": []
@@ -181,24 +183,22 @@
 				{
 					"name": "Cat V2 Search by filter",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "     {\n    \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \t\"filters\": [\"cloudCover = '75'\"]\n    }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "A search can be filtered by any searchable properpty in the metadata. This example shows a search for records in the specified area (Denver) where cloud cover equals exactly 75. Note that when there is no specified date range, the date range criteria can be eliminated from the search request or they can be set to \"null\". In this case, start and end date are not included."
 					},
 					"response": []
@@ -206,24 +206,22 @@
 				{
 					"name": "Cat V2 Search by filter using partial string",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "      {\n     \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n     \t\"filters\": [\"imageBands LIKE 'Pan_MS1*'\"]\n     }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "Filters can use a \"like\" operator to find records that match a partial string. Note that in Catalog V2 a partial string search uses an \"*\" asterisk. In Catalog V1, a \"%\" percent was used."
 					},
 					"response": []
@@ -231,24 +229,22 @@
 				{
 					"name": "Cat V2 Search using all criteria",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "    {\n   \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n   \t\"startDate\": \"2014-01-01T00:00:00.000Z\",\n   \t\"endDate\": \"2014-12-31T23:59:59.999Z\",\n   \t\"filters\": [\"(sensorPlatformName == WORLDVIEW03_VNIR) OR (sensorPlatformName == WORLDVIEW03_SWIR)\"],\n   \t\"types\": [\"1BProduct\"],\n   \t\"limit\":3\n   }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This example shows a search request that specifies values for all search criteria: search area, date range, filters, and types. The search result will be limited to 3 records."
 					},
 					"response": []
@@ -256,24 +252,22 @@
 				{
 					"name": "Cat V2 Search using multiple filters",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n  \t\"startDate\": \"2014-01-01T00:00:00.000Z\",\n  \t\"endDate\": \"2014-12-31T23:59:59.999Z\",\n  \t\"filters\": [\"(sensorPlatformName == WORLDVIEW03_VNIR) OR (sensorPlatformName == WORLDVIEW03_SWIR)\"]\n  \n  }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This search uses multiple filters to narrow the results. In this specific case, the request could be used to find WORLDVIEW03 records since it filters for both WORLDVIEW03_VNIR and WORLDVIEW03_SWIR. The results of this search are truncated by the 1000 record limit."
 					},
 					"response": []
@@ -281,24 +275,22 @@
 				{
 					"name": "Cat V2 Search for DigitalGlobe Products over Denver",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "     {\n      \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n      \t\"startDate\": \"2014-01-01T00:00:00.000Z\",\n      \t\"endDate\": \"2014-12-31T23:59:59.999Z\",\n      \t\"types\": [\"DigitalGlobeProduct\"]\n      \n      }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This example searches for DigitalGLobe products over Denver. DigitalGlobe products means products that are derived from acquisitions for DigitalGlobe satellites."
 					},
 					"response": []
@@ -306,24 +298,22 @@
 				{
 					"name": "Cat V2 Search for DigitalGlobe Acquisitions over Denver copy",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "    {\n    \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \t\"startDate\": \"2014-01-01T00:00:00.000Z\",\n    \t\"endDate\": \"2014-12-31T23:59:59.999Z\",\n    \t\"types\": [\"DigitalGlobeAcquisition\"]\n   \n    }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "DigitalGlobe Acquisitions are acquisitions from DigitalGlobe satellites. An acquisition is the raw data that a \"product\" is derived from."
 					},
 					"response": []
@@ -331,24 +321,22 @@
 				{
 					"name": "Cat V2 Search for IDAHO Images over Denver",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "  {\n    \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \t\"types\": [\"IDAHOImage\"]\n    \n    }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "The IDAHO image format is a tile-based format optimized for storage in a cloud-based object store. IDAHO image records are ingested into the GBDX catalog and are searchable by ID."
 					},
 					"response": []
@@ -356,24 +344,22 @@
 				{
 					"name": "Cat V2 Search for Landsat records by type",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "      {\n    \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188     40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \t\"startDate\": \"2014-01-01T00:00:00.000Z\",\n    \t\"endDate\": \"2014-12-31T23:59:59.999Z\",\n    \t\"types\": [\"Landsat8\"]\n    }"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "Landsat images can be discovered by searching by \"types\" = Landsat8, or by doing a filter search on Landsat08. See the next example for a filter search. Both searches return the same records."
 					},
 					"response": []
@@ -382,24 +368,23 @@
 		},
 		{
 			"name": "Ordering V2",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Heartbeat",
 					"request": {
-						"url": "https://geobigdata.io/orders/v2/heartbeat",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/orders/v2/heartbeat",
 						"description": "Check the heartbeat of the Orders V2 API\n\nUnder body, switch from \"pretty\" to \"raw\" to get the correct response. A successful response is \"ok\"."
 					},
 					"response": []
@@ -407,24 +392,22 @@
 				{
 					"name": "Place an Order",
 					"request": {
-						"url": "https://geobigdata.io/orders/v2/order",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "[\n    \"104001000506EE00\",\n    \"1010010005231400\"\n]\n\n"
 						},
+						"url": "https://geobigdata.io/orders/v2/order",
 						"description": "Ordering V1 has been deprecated. Please migrate to V2 APIs\n\nAdd catalog IDs to Order request in the body. "
 					},
 					"response": []
@@ -432,24 +415,22 @@
 				{
 					"name": "Get Order Status",
 					"request": {
-						"url": "https://geobigdata.io/orders/v2/order/,order_id",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/orders/v2/order/,order_id",
 						"description": "Check the status of an order. You need your Order ID to place this request"
 					},
 					"response": []
@@ -458,36 +439,44 @@
 		},
 		{
 			"name": "S3Credentials",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Heartbeat",
 					"request": {
-						"url": "https://geobigdata.io/s3creds/v1/heartbeat",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/s3creds/v1/heartbeat"
 					},
 					"response": []
 				},
 				{
 					"name": "Get S3 location &  credentials (specify timeout)",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://geobigdata.io/s3creds/v1/prefix?duration=3600",
 							"protocol": "https",
@@ -505,48 +494,47 @@
 									"key": "duration",
 									"value": "3600"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get S3 location &  credentials",
 					"request": {
-						"url": "https://geobigdata.io/s3creds/v1/prefix",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/s3creds/v1/prefix"
 					},
 					"response": []
 				},
 				{
 					"name": "Get Object URL",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "https://geobigdata.io/s3creds/v1/object/url?object_name=folder/file.txt",
 							"protocol": "https",
@@ -565,25 +553,7 @@
 									"key": "object_name",
 									"value": "folder/file.txt"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+							]
 						},
 						"description": "Note: This request will return a 404 error unless you use a valid object name."
 					},
@@ -593,24 +563,23 @@
 		},
 		{
 			"name": "Tasks",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "List All Tasks",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/tasks",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/workflows/v1/tasks",
 						"description": "This request lists all tasks availabelto the requester, based on their account level. In a \"list all tasks\" request, all versions of a task are listed. To use the latest version of a task in a workflow, simply list the task's name without the version number."
 					},
 					"response": []
@@ -618,19 +587,18 @@
 				{
 					"name": "Get A Task by Name",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/tasks/taskname",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/workflows/v1/tasks/taskname",
 						"description": "Substitue the full name of a task in place of \"taskname\" in this request. Getting a task by name only will retrieve the most recent version of the task. To retrieve an earlier version, include the version number with the name as \"name:version\""
 					},
 					"response": []
@@ -638,44 +606,40 @@
 				{
 					"name": "Get A Task by Name and version number",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/tasks/name:version",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/tasks/name:version"
 					},
 					"response": []
 				},
 				{
 					"name": "Register  or Version a Task",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/tasks",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n     \n\"inputPortDescriptors\": [\n        {\n            \"required\": true,\n            \"description\": \"A string input.\",\n            \"name\": \"inputstring\",\n            \"type\": \"string\"\n        },\n        {\n            \"name\": \"dependency_input\",\n            \"type\": \"string\"\n        }\n    ],\n    \"outputPortDescriptors\":[\n        {\n            \"name\": \"dependency_output\",\n            \"type\": \"string\"\n        }\n    ],\n    \"containerDescriptors\": [\n        {\n            \"type\": \"DOCKER\",\n            \"command\": \"\",\n            \"properties\": {\n                \"image\": \"tdgp/test-success\",\n                \"mounts\": [\n                    {\n                        \"local\": \"$task_data_dir\",\n                        \"container\": \"/mnt/work\",\n                        \"read_only\": false\n                    }\n                ]\n            }\n        }\n    ],\n    \"description\": \"Runs a no-op task that writes successful output status.\",\n    \"name\": \"test-success\",\n    \"version\": \"0.0.1\",\n    \"properties\": null\n}\n"
 						},
+						"url": "https://geobigdata.io/workflows/v1/tasks",
 						"description": "To register a task, the version number must be set. To register a new version of the same task, the version must be incremented. Note: the example below uses mock values."
 					},
 					"response": []
@@ -683,19 +647,18 @@
 				{
 					"name": "Delete Task",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/tasks/TaskId:version",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/workflows/v1/tasks/TaskId:version",
 						"description": "To delete a task, the exact task name and version number must be included in the request. There is no way to bulk delete all versions of a task at once. Only a member of the account that owns the task can delete a task."
 					},
 					"response": []
@@ -704,177 +667,159 @@
 		},
 		{
 			"name": "Workflows",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Heartbeat",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/heartbeat",
 						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/heartbeat"
 					},
 					"response": []
 				},
 				{
 					"name": "Get WorkflowDescriptor Schema",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/schemas/WorkflowDescriptor",
 						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/schemas/WorkflowDescriptor"
 					},
 					"response": []
 				},
 				{
 					"name": "Submit a Workflow",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": " {\n \t\"name\": \"Getting_Started_Workflow\",\n \t\"tasks\": [{\n \t\t\"name\": \"show_getting_started\",\n \t\t\"taskType\": \"Getting_Started\",\n \t\t\"inputs\": [{\n \t\t\t\"name\": \"your_name\",\n \t\t\t\"value\": \"GBDX U\"\n \t\t}],\n \t\t\"outputs\": [{\n \t\t\t\"name\": \"data\",\n \t\t\t\"persist\": true,\n \t\t\t\"persistLocation\": \"getting_started\"\n \t\t}]\n \t}]\n }"
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/workflows"
 					},
 					"response": []
 				},
 				{
 					"name": "Search",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"state\": \"canceled\",\n\t\"owner\": \"owner_1\",\n\t\"lookback_h\": 3\n}"
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/workflows/search"
 					},
 					"response": []
 				},
 				{
 					"name": "Multistatus",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/multistatus",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "[\"4116337979069975292\",\n    \"4116340100612656794\"]"
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/workflows/multistatus"
 					},
 					"response": []
 				},
 				{
 					"name": "Events",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/4116337979069975292/events",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/workflows/4116337979069975292/events"
 					},
 					"response": []
 				},
 				{
 					"name": "Status",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/4249073422254282656",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/workflows/4249073422254282656"
 					},
 					"response": []
 				},
 				{
 					"name": "stdout output for a completed task",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>/tasks/<task_id>/stderr",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "\r\n{\r\n        \"name\": \"fastortho_stagetos3\",\r\n        \"tasks\": [\r\n            {\r\n                \"name\": \"FastOrtho\",\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"value\": \"http://test-tdgplatform-com/data/QB02/LV1B/053702625010_01_004/053702625010_01/053702625010_01_P013_MUL\"\r\n                    },\r\n                    {\r\n                        \"name\": \"demspecifier\",\r\n                        \"value\": \"SRTM90\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"FastOrtho\"\r\n            },\r\n            {\r\n                \"name\": \"AComp\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"FastOrtho:data\"\r\n                    }\r\n                ],\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"AComp\"\r\n            },\r\n            {\r\n                \"name\": \"StagetoS3\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"AComp:data\"\r\n                    },\r\n                    {\r\n                        \"name\": \"destination\",\r\n                        \"value\": \"http://test-tdgplatform-com/temp/123\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"StageDataToS3\"\r\n            }\r\n        ]\r\n    }\r\n"
 						},
+						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>/tasks/<task_id>/stderr",
 						"description": "Response: 200 OK Response body contains the stdout from the Docker container that ran the task.  When there is no data, the request will return \"empty. \n\nFind the task ID and workflow ID in the \"Submit a Workflow\" response."
 					},
 					"response": []
@@ -882,24 +827,22 @@
 				{
 					"name": "stderr output for a completed task",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>/tasks/<task_id>/stdout",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "\r\n{\r\n        \"name\": \"fastortho_stagetos3\",\r\n        \"tasks\": [\r\n            {\r\n                \"name\": \"FastOrtho\",\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"value\": \"http://test-tdgplatform-com/data/QB02/LV1B/053702625010_01_004/053702625010_01/053702625010_01_P013_MUL\"\r\n                    },\r\n                    {\r\n                        \"name\": \"demspecifier\",\r\n                        \"value\": \"SRTM90\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"FastOrtho\"\r\n            },\r\n            {\r\n                \"name\": \"AComp\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"FastOrtho:data\"\r\n                    }\r\n                ],\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"AComp\"\r\n            },\r\n            {\r\n                \"name\": \"StagetoS3\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"AComp:data\"\r\n                    },\r\n                    {\r\n                        \"name\": \"destination\",\r\n                        \"value\": \"http://test-tdgplatform-com/temp/123\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"StageDataToS3\"\r\n            }\r\n        ]\r\n    }\r\n"
 						},
+						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>/tasks/<task_id>/stdout",
 						"description": "Response: 200 OK Response body contains the stderr from the Docker container that ran the task.  When there is no data, the request will return \"empty. \n\nFind the task ID and workflow ID in the \"Submit a Workflow\" response."
 					},
 					"response": []
@@ -913,13 +856,11 @@
 				{
 					"name": "Get user token",
 					"request": {
-						"url": "https://geobigdata.io/auth/v1/oauth/token/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic {{apikey}}",
-								"description": ""
+								"value": "Basic {{apikey}}"
 							}
 						],
 						"body": {
@@ -942,6 +883,7 @@
 								}
 							]
 						},
+						"url": "https://geobigdata.io/auth/v1/oauth/token/",
 						"description": "Get User token request for Getting Started guide"
 					},
 					"response": []
@@ -949,24 +891,22 @@
 				{
 					"name": "Search the Catalog",
 					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-122.41189956665039 37.59415685597818, -122.41189956665039 37.64460175855099, -122.34529495239259 37.64460175855099, -122.34529495239259 37.59415685597818, -122.41189956665039 37.59415685597818))\",\n     \"startDate\":\"2015-01-01T00:00:00.000Z\",\n    \"endDate\":\"2016-03-01T23:59:59.999Z\",\n    \"filters\":[\"cloudCover < 10\",\n    \"offNadirAngle < 20\"],  \n    \"types\":[\"DigitalGlobeAcquisition\"]\n}"
 						},
+						"url": "https://geobigdata.io/catalog/v2/search",
 						"description": "This is an example of a search using all of the Catalog V2 search criteria. This search area wkt covers a small section of San Francisco. The request matches the example in the \"Getting Started\" tutorial on GBDX University."
 					},
 					"response": []
@@ -974,24 +914,22 @@
 				{
 					"name": "Place an Order",
 					"request": {
-						"url": "https://geobigdata.io/orders/v2/order",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "[\n    103001005275AC00,\n    103001004046DC00,\n    10504100106AA800,\n    1020010030936B00,\n    104001000680BA00,\n    102001003648FC00,\n    1010010012956800\n]\n\n"
 						},
+						"url": "https://geobigdata.io/orders/v2/order",
 						"description": "Ordering V1 has been deprecated. Please migrate to V2 APIs\n\nAdd catalog IDs to Order request in the body. "
 					},
 					"response": []
@@ -999,65 +937,57 @@
 				{
 					"name": "Get Order Status V2",
 					"request": {
-						"url": "https://geobigdata.io/orders/v2/order/[order_id]",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/orders/v2/order/[order_id]",
 						"description": "Check the status of an order. You need your Order ID to place this request. This example matches the \"getting started\" example in GBDX University."
 					},
 					"response": [
 						{
-							"id": "a2920d45-a0fd-4aab-9b94-b191b4ff341e",
+							"id": "53a21b3b-caaf-4c69-9226-7f59148c0426",
 							"name": "gettingstartedordersv2",
 							"originalRequest": {
-								"url": "https://geobigdata.io/orders/v2/order/35a91755-059f-4e14-94a1-b96e05f05fb9",
 								"method": "GET",
 								"header": [
 									{
 										"key": "Content-Type",
-										"value": "application/json",
-										"description": ""
+										"value": "application/json"
 									},
 									{
 										"key": "Authorization",
-										"value": "Bearer hR5ogiFYbAKiAORa7TM4xRNYfKXcGt",
-										"description": ""
+										"value": "Bearer hR5ogiFYbAKiAORa7TM4xRNYfKXcGt"
 									},
 									{
 										"key": "Cache-Control",
-										"value": "no-cache",
-										"description": ""
+										"value": "no-cache"
 									},
 									{
 										"key": "Postman-Token",
-										"value": "c03e3012-316d-89ab-ffe0-52899e7016d9",
-										"description": ""
+										"value": "c03e3012-316d-89ab-ffe0-52899e7016d9"
 									}
 								],
 								"body": {
 									"mode": "raw",
 									"raw": ""
 								},
-								"description": ""
+								"url": "https://geobigdata.io/orders/v2/order/35a91755-059f-4e14-94a1-b96e05f05fb9"
 							},
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "javascript",
-							"_postman_previewtype": "html",
 							"header": [
 								{
 									"name": "Connection",
@@ -1109,7 +1039,6 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": 704,
 							"body": "{\"order_id\": \"35a91755-059f-4e14-94a1-b96e05f05fb9\", \"acquisitions\": [{\"acquisition_id\": \"1010010012956800\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/054784461010_01_003\"}, {\"acquisition_id\": \"1020010030936B00\", \"state\": \"submitted\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"102001003648FC00\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/055162908010_01_003\"}, {\"acquisition_id\": \"103001004046DC00\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/055166274010_01_003\"}, {\"acquisition_id\": \"103001005275AC00\", \"state\": \"placed\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"104001000680BA00\", \"state\": \"submitted\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"10504100106AA800\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/054876435050_01_003\"}]}"
 						}
 					]
@@ -1117,19 +1046,18 @@
 				{
 					"name": "Get Getting_Started Task",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/tasks/Getting_Started",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": "https://geobigdata.io/workflows/v1/tasks/Getting_Started",
 						"description": "This example shows the task descriptor for a mock task called \"Getting Started\". If there were multiple versions of this task, this request would retrieve the latest version. If you wanted an earlier version, you would include the version number in the request. \n\nExample: Getting_Started:0.0.1"
 					},
 					"response": []
@@ -1137,24 +1065,22 @@
 				{
 					"name": "Submit Getting Started Workflow",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "\r\n {\r\n \t\"name\": \"Getting_Started_Workflow\",\r\n \t\"tasks\": [{\r\n \t\t\"name\": \"show_getting_started\",\r\n \t\t\"taskType\": \"Getting_Started\",\r\n \t\t\"inputs\": [{\r\n \t\t\t\"name\": \"your_name\",\r\n \t\t\t\"value\": \"GBDX U\"\r\n \t\t}],\r\n \t\t\"outputs\": [{\r\n \t\t\t\"name\": \"data\",\r\n \t\t\t\"persist\": true,\r\n \t\t\t\"persistLocation\": \"getting_started\"\r\n \t\t}]\r\n \t}]\r\n }"
 						},
+						"url": "https://geobigdata.io/workflows/v1/workflows",
 						"description": "Run workflow that contains getting started task and stageDatatoS3 task"
 					},
 					"response": []
@@ -1162,45 +1088,40 @@
 				{
 					"name": "Get Workflow Status",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>"
 					},
 					"response": []
 				},
 				{
 					"name": "Get Workflow Events",
 					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_ID>/events",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
+								"value": "Bearer {{token}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_ID>/events"
 					},
 					"response": []
 				}
