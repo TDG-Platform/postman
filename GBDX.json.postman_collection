@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "GBDX",
-		"_postman_id": "ddf72766-db25-96b0-b880-84916da523e2",
+		"_postman_id": "8c52e529-666a-c40f-b21f-c7582bce1186",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -18,8 +18,8 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Basic {{apikey}}",
+								"key": "Content-Type",
+								"value": "application/json",
 								"description": ""
 							}
 						],
@@ -29,20 +29,17 @@
 								{
 									"key": "grant_type",
 									"value": "password",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								},
 								{
 									"key": "username",
 									"value": "{{username}}",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "{{password}}",
-									"type": "text",
-									"enabled": true
+									"type": "text"
 								}
 							]
 						},
@@ -53,7 +50,7 @@
 			]
 		},
 		{
-			"name": "Catalog V2 (NEW!)",
+			"name": "Catalog V2  API",
 			"description": "Catalog V1 will be deprecated 6/22/2017. Please migrate to the Catalog V2 API. ",
 			"item": [
 				{
@@ -73,7 +70,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": "Replace \"my record\" with a valid record ID to get a response. Any type of record can be retrieved."
 					},
 					"response": []
@@ -377,946 +377,6 @@
 						"description": "Landsat images can be discovered by searching by \"types\" = Landsat8, or by doing a filter search on Landsat08. See the next example for a filter search. Both searches return the same records."
 					},
 					"response": []
-				},
-				{
-					"name": "Cat V2 FIlter for LANDSAT08 records over Denver",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v2/search",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\n   \t\"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188     40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n   \t\"startDate\": \"2014-01-01T00:00:00.000Z\",\n   \t\"endDate\": \"2014-12-31T23:59:59.999Z\",\n   \t\"filters\": [\"sensorPlatformName ='Landsat08'\"]\n   }"
-						},
-						"description": "Landsat images can be discovered by searching by \"types\" = Landsat8, or by doing a filter search on Landsat08. See the above example for a \"types\" search. Both searches return the same records."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "DEPRECATED - Catalog V1",
-			"description": "Catalog V1 has been. Please migrate to the Catalog V2 API. ",
-			"item": [
-				{
-					"name": "Heartbeat",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/heartbeat",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Create a record",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/record",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\n    \"properties\":{\n        \"vendorName\":\"DigitalGlobe\",\n        \"acquisitionDate\":\"Fri Feb 06 15:03:50 MST 2015\"\n    },\n    \"type\":\"Image\",\n    \"identifier\":\"myRecord\"\n  }"
-						},
-						"description": "Note: The request sample will return a 409 conflict error because it uses a record identifier that already exists in the database. To get a valid response, use a unique identifier in your request. "
-					},
-					"response": []
-				},
-				{
-					"name": "Update a record",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/record",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "  {\n    \"properties\":{\n        \"vendorName\":\"DigitalGlobe\",\n        \"acquisitionDate\":\"Fri Feb 06 15:03:50 MST 2015\",\n        \"myProperty\": \"propertyValue\"\n    },\n    \"type\": \"Image\",\n    \"identifier\":\"myRecord\"\n  }"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get a record",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/record/myRecord?includeRelationships=false",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Remove a record",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/record/myRecord",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "Note: This request returns a 204 No Content, indicating the record has been successfully removed."
-					},
-					"response": []
-				},
-				{
-					"name": "Create a Relationship",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/relationship",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n            \"identifier\": \"r1\",\n            \"label\": \"_previousAcquisition\",\n            \"fromObjectId\": \"myRecord\",\n            \"toObjectId\": \"myRecord\"\n        }"
-						},
-						"description": "Note: The sample request will return a 409 conflict message because the relationship identifier is already in the database. To get a valid response, create a unique identifier.You can verify the relationship was created with the new identifier by using the \"retrieve a relationship\" request, and requesting the identifier you just created."
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve a Relationship",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/relationship/r1",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Remove a Relationship",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/relationship/r1",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "This request returns a 204 No Content request because the relationship has been removed successfully."
-					},
-					"response": []
-				},
-				{
-					"name": "Traverse",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/traverse?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"rootRecordId\": \"myRecord\",\n    \"maxdepth\": 2,\n    \"direction\": \"both\",\n    \"labels\": [\"relationship_label1\",\"relationship_label2\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Traverse from DG Acquisition",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/traverse?includeRelationships=False",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"rootRecordId\": \"1040010004576800\",\n        \"maxdepth\": 10,\n        \"direction\": \"both\",\n        \"labels\": []\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get Image Files for a DG Product",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/traverse?includeRelationships=False",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"rootRecordId\": \"12daba13-bfb2-4753-af70-64b167170d6c\",\n        \"maxdepth\": 1,\n        \"direction\": \"out\",\n        \"labels\": [\"_imageFiles\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "List all types",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var data = JSON.parse(responseBody);",
-									"",
-									"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
-									"",
-									"tests[\"Response body\"] = responseBody === [{\"properties\":[],\"identifier\":\"Acquisition\"},{\"properties\":[],\"identifier\":\"V\"},{\"properties\":[],\"identifier\":\"Tag\"}];"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/type",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Register a type",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/type",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n        \"identifier\": \"myType\",\n        \"properties\": [\n            {\n                \"name\": \"footprintWKT\",\n                \"type\": \"String\"\n            },\n            {\n                \"name\": \"int_prop\",\n                \"type\": \"Integer\"\n            },\n            {\n                \"name\": \"float_prop\",\n                \"type\": \"Float\"\n            }\n        ]\n        }"
-						},
-						"description": "Note: Register a Type will return a 204 No Content response to show the Type has been successfully registered. To confirm, use the Retrieve a Type request with the type you registered as the identifier. "
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve a type",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"var data = JSON.parse(responseBody);",
-									"",
-									"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
-									"",
-									"tests[\"Response body\"] = responseBody === [{\"properties\":[],\"identifier\":\"Acquisition\"},{\"properties\":[],\"identifier\":\"V\"},{\"properties\":[],\"identifier\":\"Tag\"}];"
-								]
-							}
-						}
-					],
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/type/myType",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Remove a type",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/type/myType",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "Note: Remove a Type will return a 204 No Content response when the type has been successfully removed. "
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "DEPRECATED - Catalog V1 Search",
-			"description": "Catalog V1 gas been deprecated. Please migrate to the Catalog V2 API. ",
-			"item": [
-				{
-					"name": "Any DG Product over Nepal",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((85.12055941 27.08074442, 85.31423408 27.10157442, 85.31502922 26.960545, 85.11922108 26.93735095, 85.12055941 27.08074442))\",\n    \"startDate\":null,\n    \"endDate\":null,\n    \"filters\":[ \"_acquisition.productLevel <> ''\"],  \n    \"tagResults\":false,\n    \"types\":[\"Acquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "1B Products over Nepal",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((85.12055941 27.08074442, 85.31423408 27.10157442, 85.31502922 26.960545, 85.11922108 26.93735095, 85.12055941 27.08074442))\",\n    \"startDate\":null,\n    \"endDate\":null,\n    \"filters\":[ \"_acquisition.productLevel = 'LV1B'\"],  \n    \"tagResults\":false,\n    \"types\":[\"Acquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "1B WV03 Products over Nepal",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"startDate\":null,\n    \"endDate\": null,\n    \"searchAreaWkt\":\"POLYGON((85.12055941 27.08074442, 85.31423408 27.10157442, 85.31502922 26.960545, 85.11922108 26.93735095, 85.12055941 27.08074442))\",\n    \"tagResults\": false,\n    \"filters\":[  \n        \"_acquisition.productLevel = 'LV1B'\",\n        \"sensorPlatformName = 'WORLDVIEW03'\"\n    ],\n    \"types\":[\"Acquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Acquisitions over Denver",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \"startDate\":null,\n    \"endDate\":null,\n    \"filters\":[],  \n    \"tagResults\":false,\n    \"types\":[\"Acquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Acquisitions over Denver that have been ordered",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \"startDate\":null,\n    \"endDate\":null,\n    \"filters\":[\"_orderedAsPartOf.salesOrderNumber <> ''\"],  \n    \"tagResults\":false,\n    \"types\":[\"Acquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "DG Acquisitions over Denver with Products available",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \"startDate\":null,\n    \"endDate\":null,\n    \"filters\":[\"_acquisition.productLevel <> ''\"],  \n    \"tagResults\":false,\n    \"types\":[\"DigitalGlobeAcquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Landsat Acquisitions over Denver from 2014",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \"startDate\":\"2014-01-01T00:00:00.000Z\",\n    \"endDate\":\"2014-12-31T23:59:59.999Z\",\n    \"filters\":[],  \n    \"tagResults\":false,\n    \"types\":[\"LandsatAcquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Recent and available, pretty DG Product over Denver",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-105.35202026367188 39.48113956424843, -105.35202026367188 40.044848254075546, -104.65988159179688 40.044848254075546, -104.65988159179688 39.48113956424843, -105.35202026367188 39.48113956424843))\",\n    \"startDate\": \"2015-01-01T00:00:00.000Z\",\n    \"endDate\":null,\n    \"filters\":[\"_acquisition.productLevel <> ''\", \"sensorPlatformName = 'WORLDVIEW03'\",\"offNadirAngle < 15\", \"cloudCover < 20\"],  \n    \"tagResults\":false,\n    \"types\":[\"DigitalGlobeAcquisition\"]\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Getting Started",
-			"description": "Postman requests for the Getting Started Guide",
-			"item": [
-				{
-					"name": "Get user token",
-					"request": {
-						"url": "https://geobigdata.io/auth/v1/oauth/token/",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Basic {{apikey}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "grant_type",
-									"value": "password",
-									"type": "text",
-									"enabled": true
-								},
-								{
-									"key": "username",
-									"value": "{{username}}",
-									"type": "text",
-									"enabled": true
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "text",
-									"enabled": true
-								}
-							]
-						},
-						"description": "Get User token request for Getting Started guide"
-					},
-					"response": []
-				},
-				{
-					"name": "Search the Catalog (Catalog V2 example)",
-					"request": {
-						"url": "https://geobigdata.io/catalog/v1/search?includeRelationships=false",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-122.41189956665039 37.59415685597818, -122.41189956665039 37.64460175855099, -122.34529495239259 37.64460175855099, -122.34529495239259 37.59415685597818, -122.41189956665039 37.59415685597818))\",\n     \"startDate\":\"2015-01-01T00:00:00.000Z\",\n    \"endDate\":\"2016-03-01T23:59:59.999Z\",\n    \"filters\":[\"cloudCover < 10\",\n    \"offNadirAngle < 20\"],  \n    \"types\":[\"DigitalGlobeAcquisition\"]\n}"
-						},
-						"description": "This is an example of a search using all of the Catalog V2 search criteria. This search area wkt covers a small section of San Francisco. The request matches the example in the \"Getting Started\" tutorial on GBDX University."
-					},
-					"response": []
-				},
-				{
-					"name": "Place an Order",
-					"request": {
-						"url": "https://geobigdata.io/orders/v2/order",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n    103001005275AC00,\n    103001004046DC00,\n    10504100106AA800,\n    1020010030936B00,\n    104001000680BA00,\n    102001003648FC00,\n    1010010012956800\n]\n\n"
-						},
-						"description": "Ordering V1 has been deprecated. Please migrate to V2 APIs\n\nAdd catalog IDs to Order request in the body. "
-					},
-					"response": []
-				},
-				{
-					"name": "Get Order Status V2",
-					"request": {
-						"url": "https://geobigdata.io/orders/v2/order/9f9a65c7-4a05-4f22-99e5-e75cd50ae6dd",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "Check the status of an order. You need your Order ID to place this request. This example matches the \"getting started\" example in GBDX University."
-					},
-					"response": [
-						{
-							"id": "0f5e58d4-4656-4c2b-b17d-a1f42fc07bfb",
-							"name": "gettingstartedordersv2",
-							"originalRequest": {
-								"url": "https://geobigdata.io/orders/v2/order/35a91755-059f-4e14-94a1-b96e05f05fb9",
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"description": ""
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer hR5ogiFYbAKiAORa7TM4xRNYfKXcGt",
-										"description": ""
-									},
-									{
-										"key": "Cache-Control",
-										"value": "no-cache",
-										"description": ""
-									},
-									{
-										"key": "Postman-Token",
-										"value": "c03e3012-316d-89ab-ffe0-52899e7016d9",
-										"description": ""
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"description": ""
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "javascript",
-							"_postman_previewtype": "html",
-							"header": [
-								{
-									"name": "Connection",
-									"key": "Connection",
-									"value": "keep-alive",
-									"description": "Options that are desired for the connection"
-								},
-								{
-									"name": "Content-Length",
-									"key": "Content-Length",
-									"value": "872",
-									"description": "The length of the response body in octets (8-bit bytes)"
-								},
-								{
-									"name": "Content-Type",
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "The mime type of this content"
-								},
-								{
-									"name": "Date",
-									"key": "Date",
-									"value": "Wed, 30 Mar 2016 20:46:56 GMT",
-									"description": "The date and time that the message was sent"
-								},
-								{
-									"name": "Via",
-									"key": "Via",
-									"value": "kong/0.5.2",
-									"description": "Informs the client of proxies through which the response was sent."
-								},
-								{
-									"name": "X-Amz-Cf-Id",
-									"key": "X-Amz-Cf-Id",
-									"value": "uIkBX1NaJ3tiHnV6aD2cITzws0b1ktFORd86A324cw9Ryf229hoxqw==",
-									"description": "Custom header"
-								},
-								{
-									"name": "X-Cache",
-									"key": "X-Cache",
-									"value": "Miss from cloudfront",
-									"description": "Custom header"
-								},
-								{
-									"name": "x-amzn-RequestId",
-									"key": "x-amzn-RequestId",
-									"value": "8a87d065-f6b8-11e5-9b68-4dc1c5ce1ac3",
-									"description": "Custom header"
-								}
-							],
-							"cookie": [],
-							"responseTime": 704,
-							"body": "{\"order_id\": \"35a91755-059f-4e14-94a1-b96e05f05fb9\", \"acquisitions\": [{\"acquisition_id\": \"1010010012956800\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/054784461010_01_003\"}, {\"acquisition_id\": \"1020010030936B00\", \"state\": \"submitted\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"102001003648FC00\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/055162908010_01_003\"}, {\"acquisition_id\": \"103001004046DC00\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/055166274010_01_003\"}, {\"acquisition_id\": \"103001005275AC00\", \"state\": \"placed\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"104001000680BA00\", \"state\": \"submitted\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"10504100106AA800\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/054876435050_01_003\"}]}"
-						}
-					]
-				},
-				{
-					"name": "Get Getting_Started Task",
-					"request": {
-						"url": "https://geobigdata.io/workflows/v1/tasks/Getting_Started",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "This example shows the task descriptor for a mock task called \"Getting Started\". If there were multiple versions of this task, this request would retrieve the latest version. If you wanted an earlier version, you would include the version number in the request. \n\nExample: Getting_Started:0.0.1"
-					},
-					"response": []
-				},
-				{
-					"name": "Run Getting Started Workflow",
-					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n        \"name\": \"Getting_Started_Workflow\",\r\n        \"tasks\": [\r\n            {\r\n                \"name\": \"show_getting_started\",\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"your_name\",\r\n                        \"value\": \"GBDX U\"\r\n                    }\r\n                   \r\n                ],\r\n                \"taskType\": \"Getting_Started\"\r\n            },\r\n            {\r\n                \"name\": \"getting_started_output\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"show_getting_started:data\"\r\n                    },\r\n                    {\r\n                       \"name\": \"destination\",\r\n                        \"value\": \"https://gbd-customer-data/YOUR_ACCOUNT_ID_PREFIX_HERE/getting_started_output/\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"StageDataToS3\"\r\n            }\r\n        ]\r\n    }\r\n"
-						},
-						"description": "Run workflow that contains getting started task and stageDatatoS3 task"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Workflow Status",
-					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get Workflow Events",
-					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_ID>/events",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
 				}
 			]
 		},
@@ -1372,7 +432,7 @@
 				{
 					"name": "Get Order Status",
 					"request": {
-						"url": "https://geobigdata.io/orders/v2/order/9f9a65c7-4a05-4f22-99e5-e75cd50ae6dd",
+						"url": "https://geobigdata.io/orders/v2/order/,order_id",
 						"method": "GET",
 						"header": [
 							{
@@ -1428,7 +488,26 @@
 				{
 					"name": "Get S3 location &  credentials (specify timeout)",
 					"request": {
-						"url": "https://geobigdata.io/s3creds/v1/prefix?duration=3600",
+						"url": {
+							"raw": "https://geobigdata.io/s3creds/v1/prefix?duration=3600",
+							"protocol": "https",
+							"host": [
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"s3creds",
+								"v1",
+								"prefix"
+							],
+							"query": [
+								{
+									"key": "duration",
+									"value": "3600"
+								}
+							],
+							"variable": []
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1468,7 +547,27 @@
 				{
 					"name": "Get Object URL",
 					"request": {
-						"url": "https://geobigdata.io/s3creds/v1/object/url?object_name=folder/file.txt",
+						"url": {
+							"raw": "https://geobigdata.io/s3creds/v1/object/url?object_name=folder/file.txt",
+							"protocol": "https",
+							"host": [
+								"geobigdata",
+								"io"
+							],
+							"path": [
+								"s3creds",
+								"v1",
+								"object",
+								"url"
+							],
+							"query": [
+								{
+									"key": "object_name",
+									"value": "folder/file.txt"
+								}
+							],
+							"variable": []
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1604,149 +703,6 @@
 			]
 		},
 		{
-			"name": "Thumbnails",
-			"description": "",
-			"item": [
-				{
-					"name": "Thumbnail Mode Max Width",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/thumbnail/1030010027887C00/256?orientation=maxwidth",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Browse Mode Medium",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/browse/1030010027887C00.medium.png",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Browse Mode Natres",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/browse/1030010027887C00.natres.png",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": "Note: This request may take several seconds, depending on the size of the file."
-					},
-					"response": []
-				},
-				{
-					"name": "Thumbnail Mode Standard (fit to square-wide)",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/thumbnail/1030010004A5E500/256?orientation=standard",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Browse Mode Large",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/browse/1030010027887C00.large.png",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Thumbnail Mode Max Height",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/thumbnail/1030010027887C00/256?orientation=maxheight",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Thumbnail Mode Standard (fit to square)",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/thumbnail/1030010027887C00/256?orientation=standard",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Browse Mode Small",
-					"request": {
-						"url": "https://geobigdata.io/thumbnails/v1/browse/1030010027887C00.small.png",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get TaskDescriptor Schema ",
-					"request": {
-						"url": "https://geobigdata.io/workflows/v1/schemas/TaskDescriptor",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Workflows",
 			"description": "",
 			"item": [
@@ -1797,27 +753,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n        \"name\": \"Getting_Started_Workflow\",\r\n        \"tasks\": [\r\n            {\r\n                \"name\": \"show_getting_started\",\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"your_name\",\r\n                        \"value\": \"GBDX U\"\r\n                    }\r\n                   \r\n                ],\r\n                \"taskType\": \"Getting_Started\"\r\n            },\r\n            {\r\n                \"name\": \"getting_started_output\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"show_getting_started:data\"\r\n                    },\r\n                    {\r\n                       \"name\": \"destination\",\r\n                        \"value\": \"https://gbd-customer-data/YOUR_ACCOUNT_ID_PREFIX_HERE/getting_started_output/\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"StageDataToS3\"\r\n            }\r\n        ]\r\n    }\r\n"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get Search Schema",
-					"request": {
-						"url": "https://geobigdata.io/workflows/v1/workflows/search",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+							"raw": " {\n \t\"name\": \"Getting_Started_Workflow\",\n \t\"tasks\": [{\n \t\t\"name\": \"show_getting_started\",\n \t\t\"taskType\": \"Getting_Started\",\n \t\t\"inputs\": [{\n \t\t\t\"name\": \"your_name\",\n \t\t\t\"value\": \"GBDX U\"\n \t\t}],\n \t\t\"outputs\": [{\n \t\t\t\"name\": \"data\",\n \t\t\t\"persist\": true,\n \t\t\t\"persistLocation\": \"getting_started\"\n \t\t}]\n \t}]\n }"
 						},
 						"description": ""
 					},
@@ -1842,7 +778,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"lookback_h\":12,\n    \"owner\":\"bcullen\"\n}\n"
+							"raw": "{\n\t\"state\": \"canceled\",\n\t\"owner\": \"owner_1\",\n\t\"lookback_h\": 3\n}"
 						},
 						"description": ""
 					},
@@ -1965,6 +901,306 @@
 							"raw": "\r\n{\r\n        \"name\": \"fastortho_stagetos3\",\r\n        \"tasks\": [\r\n            {\r\n                \"name\": \"FastOrtho\",\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"value\": \"http://test-tdgplatform-com/data/QB02/LV1B/053702625010_01_004/053702625010_01/053702625010_01_P013_MUL\"\r\n                    },\r\n                    {\r\n                        \"name\": \"demspecifier\",\r\n                        \"value\": \"SRTM90\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"FastOrtho\"\r\n            },\r\n            {\r\n                \"name\": \"AComp\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"FastOrtho:data\"\r\n                    }\r\n                ],\r\n                \"outputs\": [\r\n                    {\r\n                        \"name\": \"data\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"AComp\"\r\n            },\r\n            {\r\n                \"name\": \"StagetoS3\",\r\n                \"inputs\": [\r\n                    {\r\n                        \"name\": \"data\",\r\n                        \"source\": \"AComp:data\"\r\n                    },\r\n                    {\r\n                        \"name\": \"destination\",\r\n                        \"value\": \"http://test-tdgplatform-com/temp/123\"\r\n                    }\r\n                ],\r\n                \"taskType\": \"StageDataToS3\"\r\n            }\r\n        ]\r\n    }\r\n"
 						},
 						"description": "Response: 200 OK Response body contains the stderr from the Docker container that ran the task.  When there is no data, the request will return \"empty. \n\nFind the task ID and workflow ID in the \"Submit a Workflow\" response."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Getting Started",
+			"description": "Postman requests for the Getting Started Guide",
+			"item": [
+				{
+					"name": "Get user token",
+					"request": {
+						"url": "https://geobigdata.io/auth/v1/oauth/token/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic {{apikey}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Get User token request for Getting Started guide"
+					},
+					"response": []
+				},
+				{
+					"name": "Search the Catalog",
+					"request": {
+						"url": "https://geobigdata.io/catalog/v2/search",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \n    \"searchAreaWkt\": \"POLYGON ((-122.41189956665039 37.59415685597818, -122.41189956665039 37.64460175855099, -122.34529495239259 37.64460175855099, -122.34529495239259 37.59415685597818, -122.41189956665039 37.59415685597818))\",\n     \"startDate\":\"2015-01-01T00:00:00.000Z\",\n    \"endDate\":\"2016-03-01T23:59:59.999Z\",\n    \"filters\":[\"cloudCover < 10\",\n    \"offNadirAngle < 20\"],  \n    \"types\":[\"DigitalGlobeAcquisition\"]\n}"
+						},
+						"description": "This is an example of a search using all of the Catalog V2 search criteria. This search area wkt covers a small section of San Francisco. The request matches the example in the \"Getting Started\" tutorial on GBDX University."
+					},
+					"response": []
+				},
+				{
+					"name": "Place an Order",
+					"request": {
+						"url": "https://geobigdata.io/orders/v2/order",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    103001005275AC00,\n    103001004046DC00,\n    10504100106AA800,\n    1020010030936B00,\n    104001000680BA00,\n    102001003648FC00,\n    1010010012956800\n]\n\n"
+						},
+						"description": "Ordering V1 has been deprecated. Please migrate to V2 APIs\n\nAdd catalog IDs to Order request in the body. "
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Status V2",
+					"request": {
+						"url": "https://geobigdata.io/orders/v2/order/[order_id]",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Check the status of an order. You need your Order ID to place this request. This example matches the \"getting started\" example in GBDX University."
+					},
+					"response": [
+						{
+							"id": "a2920d45-a0fd-4aab-9b94-b191b4ff341e",
+							"name": "gettingstartedordersv2",
+							"originalRequest": {
+								"url": "https://geobigdata.io/orders/v2/order/35a91755-059f-4e14-94a1-b96e05f05fb9",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer hR5ogiFYbAKiAORa7TM4xRNYfKXcGt",
+										"description": ""
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"description": ""
+									},
+									{
+										"key": "Postman-Token",
+										"value": "c03e3012-316d-89ab-ffe0-52899e7016d9",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "javascript",
+							"_postman_previewtype": "html",
+							"header": [
+								{
+									"name": "Connection",
+									"key": "Connection",
+									"value": "keep-alive",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"name": "Content-Length",
+									"key": "Content-Length",
+									"value": "872",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"name": "Content-Type",
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "The mime type of this content"
+								},
+								{
+									"name": "Date",
+									"key": "Date",
+									"value": "Wed, 30 Mar 2016 20:46:56 GMT",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"name": "Via",
+									"key": "Via",
+									"value": "kong/0.5.2",
+									"description": "Informs the client of proxies through which the response was sent."
+								},
+								{
+									"name": "X-Amz-Cf-Id",
+									"key": "X-Amz-Cf-Id",
+									"value": "uIkBX1NaJ3tiHnV6aD2cITzws0b1ktFORd86A324cw9Ryf229hoxqw==",
+									"description": "Custom header"
+								},
+								{
+									"name": "X-Cache",
+									"key": "X-Cache",
+									"value": "Miss from cloudfront",
+									"description": "Custom header"
+								},
+								{
+									"name": "x-amzn-RequestId",
+									"key": "x-amzn-RequestId",
+									"value": "8a87d065-f6b8-11e5-9b68-4dc1c5ce1ac3",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"responseTime": 704,
+							"body": "{\"order_id\": \"35a91755-059f-4e14-94a1-b96e05f05fb9\", \"acquisitions\": [{\"acquisition_id\": \"1010010012956800\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/054784461010_01_003\"}, {\"acquisition_id\": \"1020010030936B00\", \"state\": \"submitted\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"102001003648FC00\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/055162908010_01_003\"}, {\"acquisition_id\": \"103001004046DC00\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/055166274010_01_003\"}, {\"acquisition_id\": \"103001005275AC00\", \"state\": \"placed\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"104001000680BA00\", \"state\": \"submitted\", \"location\": \"not_delivered\"}, {\"acquisition_id\": \"10504100106AA800\", \"state\": \"delivered\", \"location\": \"s3://receiving-dgcs-tdgplatform-com/054876435050_01_003\"}]}"
+						}
+					]
+				},
+				{
+					"name": "Get Getting_Started Task",
+					"request": {
+						"url": "https://geobigdata.io/workflows/v1/tasks/Getting_Started",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "This example shows the task descriptor for a mock task called \"Getting Started\". If there were multiple versions of this task, this request would retrieve the latest version. If you wanted an earlier version, you would include the version number in the request. \n\nExample: Getting_Started:0.0.1"
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Getting Started Workflow",
+					"request": {
+						"url": "https://geobigdata.io/workflows/v1/workflows",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n \t\"name\": \"Getting_Started_Workflow\",\r\n \t\"tasks\": [{\r\n \t\t\"name\": \"show_getting_started\",\r\n \t\t\"taskType\": \"Getting_Started\",\r\n \t\t\"inputs\": [{\r\n \t\t\t\"name\": \"your_name\",\r\n \t\t\t\"value\": \"GBDX U\"\r\n \t\t}],\r\n \t\t\"outputs\": [{\r\n \t\t\t\"name\": \"data\",\r\n \t\t\t\"persist\": true,\r\n \t\t\t\"persistLocation\": \"getting_started\"\r\n \t\t}]\r\n \t}]\r\n }"
+						},
+						"description": "Run workflow that contains getting started task and stageDatatoS3 task"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workflow Status",
+					"request": {
+						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_id>",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workflow Events",
+					"request": {
+						"url": "https://geobigdata.io/workflows/v1/workflows/<workflow_ID>/events",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"response": []
 				}
